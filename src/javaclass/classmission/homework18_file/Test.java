@@ -36,22 +36,28 @@ public class Test {
 
 	public static void main(String[] args) throws IOException {
 		Scanner in = new Scanner(System.in);
+
 		System.out.println("请输入路径：");
 		String path = in.nextLine();
 		File file = new File(path);
 		String[] filenames = file.list();
 		System.out.println(Arrays.toString(filenames));
+
 		System.out.println("请输入后缀：");
 		String suffix = in.nextLine();
 		Suffix suf = new Suffix(suffix);
 		String[] filenamesSuffix = file.list(suf);
 		System.out.println(Arrays.toString(filenamesSuffix));
+
 		System.out.println("请输入要剪切文件的路径：");
 		String fromDir = in.nextLine();
+
 		System.out.println("请输入文件名:");
 		String name = in.nextLine();
+
 		System.out.println("请输入剪切后的路径：");
 		String toDir = in.nextLine();
+
 		cut(fromDir, name, toDir);
 	}
 

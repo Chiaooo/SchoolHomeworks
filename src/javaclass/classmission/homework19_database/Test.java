@@ -38,18 +38,17 @@ public class Test {
 
 		if (rs.next()) {
 			System.out.println("登陆成功！");
+			sql = "select * from t_login";
+			stmt = database.getConn().createStatement();
+
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				System.out.println(rs.getInt(1) + " " + rs.getString(2) + " "
+						+ rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5));
+			}
 		} else {
 			System.out.println("登陆失败！");
-		}
-
-		sql = "select * from t_login";
-		stmt = database.getConn().createStatement();
-
-		rs = stmt.executeQuery(sql);
-
-		while (rs.next()) {
-			System.out.println(rs.getInt(1) + " " + rs.getString(2) + " "
-					+ rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5));
 		}
 
 		sql = "insert into t_login(username,password,sex,birthday) value(?,?,?,?) ";
@@ -70,7 +69,7 @@ public class Test {
 		pstmt.setDate(4, new java.sql.Date(date.getTime()));
 
 		pstmt.execute();
-		
+
 		System.out.println("插入成功！，新的数据信息如下");
 		sql = "select * from t_login";
 		stmt = database.getConn().createStatement();
