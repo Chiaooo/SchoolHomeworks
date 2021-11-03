@@ -73,7 +73,6 @@ public class Test {
 		System.out.println("插入成功！，新的数据信息如下");
 		sql = "select * from t_login";
 		stmt = database.getConn().createStatement();
-
 		rs = stmt.executeQuery(sql);
 
 		while (rs.next()) {
